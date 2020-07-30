@@ -41,7 +41,7 @@ class FriendsTableViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = false
         self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-        VKRequestDelegate.loadFriends { [weak self] (result) in
+        VKRequestController.loadFriends { [weak self] (result) in
             switch result {
             case .success(let friendResponse):
                 self?.friendResponse = friendResponse

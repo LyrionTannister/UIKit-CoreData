@@ -18,7 +18,7 @@ class LoginWKView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        WKLoginView.load(VKRequestDelegate.loginRequest())
+        WKLoginView.load(VKRequestController.loginRequest())
         WKLoginView.navigationDelegate = self
         
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))

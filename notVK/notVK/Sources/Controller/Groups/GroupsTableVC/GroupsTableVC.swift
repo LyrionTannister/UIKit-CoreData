@@ -16,7 +16,7 @@ class GroupsTableViewController: UITableViewController {
         super.viewDidLoad()
         self.clearsSelectionOnViewWillAppear = false
         
-        VKRequestDelegate.loadGroups { [weak self] (result) in
+        VKRequestController.loadGroups { [weak self] (result) in
             switch result {
             case .success(let groupResponse):
                 self?.groupResponse = groupResponse
