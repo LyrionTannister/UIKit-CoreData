@@ -42,7 +42,7 @@
 		845DAB5E246D6974003439FD /* LoginWKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAB5D246D6974003439FD /* LoginWKView.swift */; };
 		845DAB60246D70D2003439FD /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAB5F246D70D2003439FD /* Session.swift */; };
 		845DAB63246D74B7003439FD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845DAB62246D74B7003439FD /* WebKit.framework */; };
-		845DAB65246D7661003439FD /* VKRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAB64246D7661003439FD /* VKRequestController.swift */; };
+		845DAB65246D7661003439FD /* VKRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAB64246D7661003439FD /* VKRequestService.swift */; };
 		845DAB67246D78E4003439FD /* VKDataSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAB66246D78E4003439FD /* VKDataSelector.swift */; };
 		84962F6D2461F4DB007F1232 /* CustomSectionDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84962F6C2461F4DB007F1232 /* CustomSectionDesign.swift */; };
 /* End PBXBuildFile section */
@@ -85,7 +85,7 @@
 		845DAB5D246D6974003439FD /* LoginWKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWKView.swift; sourceTree = "<group>"; };
 		845DAB5F246D70D2003439FD /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		845DAB62246D74B7003439FD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		845DAB64246D7661003439FD /* VKRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKRequestController.swift; sourceTree = "<group>"; };
+		845DAB64246D7661003439FD /* VKRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKRequestService.swift; sourceTree = "<group>"; };
 		845DAB66246D78E4003439FD /* VKDataSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKDataSelector.swift; sourceTree = "<group>"; };
 		84962F6C2461F4DB007F1232 /* CustomSectionDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSectionDesign.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -254,7 +254,7 @@
 		84161BBD24D2A749001D1F3C /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				845DAB64246D7661003439FD /* VKRequestController.swift */,
+				845DAB64246D7661003439FD /* VKRequestService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -403,7 +403,7 @@
 				0924EF5B2451B5D2003EAB35 /* CustomSwipeCloseTrans.swift in Sources */,
 				094D5382244496D200387523 /* ExtFindFriend.swift in Sources */,
 				09997FD42432B1E6003891DA /* notVK.xcdatamodeld in Sources */,
-				845DAB65246D7661003439FD /* VKRequestController.swift in Sources */,
+				845DAB65246D7661003439FD /* VKRequestService.swift in Sources */,
 				09E5B8F22448889800116F51 /* Dots.swift in Sources */,
 				09A879DF243A76FC00FF7C06 /* FindFriendsTableVCell.swift in Sources */,
 				09EE39A82438237D00E5326B /* FriendsColVCell.swift in Sources */,

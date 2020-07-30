@@ -1,5 +1,5 @@
 //
-//  VKRequestController.swift
+//  VKRequestService.swift
 //  notVK
 //
 //  Created by Roman on 14.05.2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class VKRequestController {
+class VKRequestService {
     static func loginRequest() -> URLRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
