@@ -20,13 +20,11 @@ struct FriendList: Decodable {
 struct FriendItem: Decodable {
     var firstName: String
     var lastName: String
-    var online: Int
     var photo100: String?
     var id: Int
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
         case lastName = "last_name"
-        case online
         case photo100 = "photo_100"
         case id
     }

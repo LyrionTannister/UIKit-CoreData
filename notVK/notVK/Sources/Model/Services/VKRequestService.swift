@@ -9,7 +9,12 @@
 import Foundation
 
 class VKRequestService {
-    static func loginRequest() -> URLRequest {
+    
+    static var shared = VKRequestService()
+    
+    private init () {}
+    
+    func loginRequest() -> URLRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "oauth.vk.com"
@@ -26,7 +31,7 @@ class VKRequestService {
         return request
     }
 
-    static func loadGroups(completion: @escaping (Result<GroupResponse, Error>) -> Void ) {
+    func loadGroups(completion: @escaping (Result<GroupResponse, Error>) -> Void ) {
         let urlString = VKDataSelector.shared.baseUrl + VKDataSelector.Method.getGroups.methodName + "?access_token=\(Session.shared.token)&extended=1&v=5.103"
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -48,7 +53,7 @@ class VKRequestService {
         }.resume()
     }
 
-    static func loadFriends(completion: @escaping (Result<FriendResponse, Error>) -> Void) {
+    func loadFriends(completion: @escaping (Result<FriendResponse, Error>) -> Void) {
         let urlString = VKDataSelector.shared.baseUrl + VKDataSelector.Method.getFriends.methodName + "?access_token=\(Session.shared.token)&extended=1&v=5.103&fields=photo_100"
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -70,7 +75,7 @@ class VKRequestService {
         }.resume()
     }
 
-    static func loadFriendPhoto(friendId: String, completion: @escaping (Result<PhotoResponse, Error>) -> Void) {
+    func loadFriendPhoto(friendId: String, completion: @escaping (Result<PhotoResponse, Error>) -> Void) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "api.vk.com"
