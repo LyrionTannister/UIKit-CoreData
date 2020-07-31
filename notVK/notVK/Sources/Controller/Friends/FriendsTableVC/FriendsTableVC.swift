@@ -16,20 +16,13 @@ class FriendsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadFriendsFromWeb()
 
         // MARK: - Table view properties
         self.clearsSelectionOnViewWillAppear = false
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-        VKRequestService.shared.loadFriends { [weak self] (result) in
-            switch result {
-            case .success(let friendResponse):
-                self?.myFriends = friendResponse.response.items
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print("error: ", error)
-            }
-        }
     }
 
     // MARK: - Table view data source
@@ -84,5 +77,21 @@ class FriendsTableViewController: UITableViewController {
         //sortedFriends(friends: allMyFriends)
         searchTextField.endEditing(true)
         tableView.reloadData()
+    }
+}
+
+extension FriendsTableViewController {
+    func loadFriendsFromWeb(){
+        DispatchQueue.main.async {
+            VKRequestService.shared.loadFriends { [weak self] (result) in
+                switch result {
+                case .success(let friendResponse):
+                    self?.myFriends = friendResponse.response.items
+                    self?.tableView.reloadData()
+                case .failure(let error):
+                    print("error: ", error)
+                }
+            }
+        }
     }
 }
