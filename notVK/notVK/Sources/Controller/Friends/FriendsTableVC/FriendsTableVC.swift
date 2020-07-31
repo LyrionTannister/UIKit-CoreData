@@ -12,39 +12,19 @@ class FriendsTableViewController: UITableViewController {
 
     @IBOutlet weak var searchTextField: UITextField!
 
-    var friendResponse: FriendResponse? = nil
-
-    struct Section <T> {
-        var title: String
-        var items: [T]
-    }
-
-    var friendsSection = [Section<FriendItem>]()
-    var friendsDictionary : [Character:[FriendItem]]?
-    var firstLetters: [Character]? {
-        get {
-            friendsDictionary?.keys.sorted() ?? nil
-        }
-    }
+    var myFriends = [FriendItemStruct]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        friendsDictionary = self.getSortedUsers(searchText: nil)
-        //sortedFriends(friends: allMyFriends)
-        //let friendsFinder : [FriendItem]? = Dictionary.init(grouping: friendResponse?.response.items ?? nil) { $0.last_name.prefix(1)}
-        //friendsSection = friendsFinder.map {Section(title: String($0.key), items: $0.value)}
-        //friendsSection.sort {$0.title < $1.title}
-
         // MARK: - Table view properties
-
         self.clearsSelectionOnViewWillAppear = false
         self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         VKRequestService.shared.loadFriends { [weak self] (result) in
             switch result {
             case .success(let friendResponse):
-                self?.friendResponse = friendResponse
+                self?.myFriends = friendResponse.response.items
                 self?.tableView.reloadData()
             case .failure(let error):
                 print("error: ", error)
@@ -59,7 +39,7 @@ class FriendsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friendResponse?.response.items.count ?? 0
+        return myFriends.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,28 +50,13 @@ class FriendsTableViewController: UITableViewController {
         //cell.myFriendLabel.text = friends.firstName + " " + friends.lastName
         //cell.shadowLayer.image.image = UIImage(named: friends.fotoPath)
         
-        cell.myFriendLabel.text = (friendResponse?.response.items[indexPath.row].lastName ?? "") + " " + (friendResponse?.response.items[indexPath.row].firstName ?? "")
+        cell.myFriendLabel.text = myFriends[indexPath.row].lastName + " " + myFriends[indexPath.row].firstName
 
-        if let photoURL = URL(string: (friendResponse?.response.items[indexPath.row].photo100)!) {
+        if let photoURL = URL(string: (myFriends[indexPath.row].photo100)!) {
             cell.shadowLayer.image.image = UIImage(data: try! Data(contentsOf: photoURL as URL))
         }
         return cell
     }
-
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let viewForHeaderInSection = CustomSectionDesign()
-//        viewForHeaderInSection.label.text = String(firstLetters[section].uppercased())
-//        return viewForHeaderInSection
-//    }
-
-//    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-//        return friendsSection.map {$0.title}
-//    }
-
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return friendsSection[section].title
-//    }
-
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "clickToDetail" {
@@ -103,28 +68,7 @@ class FriendsTableViewController: UITableViewController {
         }
     }
 
-    func getSortedUsers(searchText: String?) -> [Character:[FriendItem]]?{
-        var tempUsers: [FriendItem]?
-        if let text = searchText?.lowercased(), searchText != "" {
-            tempUsers = friendResponse?.response.items.filter{ $0.lastName.lowercased().contains(text)}
-        } else {
-            tempUsers = friendResponse?.response.items
-        }
-        if let isUsersExists = tempUsers {
-            let sortedUsers = Dictionary.init(grouping: isUsersExists) { $0.lastName.lowercased().first! }.mapValues{ $0.sorted{ $0.lastName.lowercased() < $1.lastName.lowercased() } }
-            return sortedUsers
-        } else {
-            return nil
-        }
-    }
 
-//    func sortedFriends(friends: [User]) {
-//        let sortedUsers = Dictionary.init(grouping: friends) {$0.lastName.lowercased().first!}
-//            .mapValues{ $0.sorted{$0.lastName.lowercased() < $1.lastName.lowercased() } }
-//
-//        friendsDictionary = sortedUsers
-//    }
-    
     @IBAction func cancelButtonPressed(_ sender: Any) {
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 1,

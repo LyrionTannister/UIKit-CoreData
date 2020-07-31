@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o9M-9X-nbo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o9M-9X-nbo">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -97,11 +97,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Friends" image="person.fill" catalog="system" id="bWz-lP-3ND"/>
                     <navigationItem key="navigationItem" title="Friends" id="e5m-ap-Vib">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="person.crop.circle.fill.badge.plus" catalog="system" id="SxM-nK-UiK">
-                            <connections>
-                                <segue destination="R77-kL-9PI" kind="show" id="m62-EI-TKx"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="person.crop.circle.fill.badge.plus" catalog="system" id="SxM-nK-UiK"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -111,37 +107,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUz-mG-Lft" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2186.9565217391305" y="-409.15178571428572"/>
-        </scene>
-        <!--Find friend-->
-        <scene sceneID="BOF-th-hhX">
-            <objects>
-                <tableViewController title="Find friend" id="R77-kL-9PI" customClass="FindFriendsTableViewController" customModule="notVK" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="64X-Jp-ewh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newFriends" id="JsZ-jQ-9Pn">
-                                <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JsZ-jQ-9Pn" id="V4j-Zv-J89">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="R77-kL-9PI" id="fRz-g5-9Dl"/>
-                            <outlet property="delegate" destination="R77-kL-9PI" id="PWk-MA-EDy"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="ix7-Uh-T8W"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Snk-pe-LcU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3229" y="-975"/>
         </scene>
         <!--Profile-->
         <scene sceneID="RYl-mq-4jT">

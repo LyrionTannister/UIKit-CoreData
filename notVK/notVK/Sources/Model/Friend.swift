@@ -8,16 +8,16 @@
 
 import UIKit
 
-struct FriendResponse: Decodable {
+struct FriendResponse: Codable {
     var response: FriendList
 }
 
-struct FriendList: Decodable {
+struct FriendList: Codable {
     var count: Int
-    var items: [FriendItem]
+    var items: [FriendItemStruct]
 }
 
-struct FriendItem: Decodable {
+struct FriendItemStruct: Codable {
     var firstName: String
     var lastName: String
     var photo100: String?

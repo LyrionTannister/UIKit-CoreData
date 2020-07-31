@@ -17,3 +17,5 @@ class Session {
     var token = String()
     var userId = Int()
 }
+
+
