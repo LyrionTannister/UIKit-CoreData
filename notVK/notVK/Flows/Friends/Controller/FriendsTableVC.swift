@@ -83,7 +83,7 @@ class FriendsTableViewController: UITableViewController {
 extension FriendsTableViewController {
     func loadFriendsFromWeb(){
         DispatchQueue.main.async {
-            VKRequestService.shared.loadFriends { [weak self] (result) in
+            VKRequestService.loadFriends { [weak self] (result) in
                 switch result {
                 case .success(let friendResponse):
                     self?.myFriends = friendResponse.response.items
